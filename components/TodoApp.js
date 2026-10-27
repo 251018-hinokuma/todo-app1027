@@ -38,9 +38,10 @@ export default function TodoApp() {
   }
 
   function clearAll() {
-    if (!window.confirm('すべての TODO を削除しますか？')) return
-    setTodos([])
+  if (!window.confirm('すべての TODO を削除しますか？')) return
+  setTodos([])
   }
+
 
   const doneCount = countDone(todos)
   const remaining = countRemaining(todos)
