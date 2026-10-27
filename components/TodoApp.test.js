@@ -32,3 +32,16 @@ test('localStorage に保存された TODO が最初から表示される', () =
   expect(screen.getByText(/残り\s*0\s*件/)).toBeInTheDocument()
 })
 
+test('空白だけでは TODO は増えない', async () => {
+
+  const user = userEvent.setup()
+  render(<TodoApp />)
+  await user.type(screen.getByRole('textbox', { name: 'やること' }), '   {Enter}')
+  expect(screen.getByText('やることはありません')).toBeInTheDocument()
+  expect(screen.queryByRole('listitem')).not.toBeInTheDocument()
+})
+
+
+ 
+
+
